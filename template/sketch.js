@@ -1,9 +1,10 @@
 function setup() {
-  createCanvas(200, 200);
-  frameRate(30);
+  createCanvas(400, 400);
+  frameRate(60);
+  pixelDensity(1);
   createLoop({
     duration: 3,
-    gif:true,
+    gif: true,
     options: {quality: 10,
       workers: 3,
       width: width,
