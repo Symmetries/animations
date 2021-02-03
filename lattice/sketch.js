@@ -1,7 +1,6 @@
 let phi = (1 + 5**0.5)/2;
-let radius;
 let numPoints = 40;
-let initLineLength = 20;
+let initLineLength = 40;
 let lineLength;
 
 function f(x) {
@@ -9,8 +8,9 @@ function f(x) {
 }
 
 function setup() {
-  createCanvas(200, 200);
-  radius = 0.5 * width / phi;
+  createCanvas(400, 400);
+  pixelDensity(1);
+  strokeWeight(3);
 
   frameRate(30);
   createLoop({
