@@ -1,0 +1,58 @@
+let strokes;
+
+function setup() {
+  createCanvas(500, 500);
+  frameRate(60);
+  pixelDensity(1);
+  createLoop({
+    duration: 3,
+    gif: true,
+    options: {quality: 10,
+      workers: 3,
+      width: width,
+      height: height
+    }
+  });
+  noFill();
+  noLoop();
+  strokeWeight(3);
+
+  strokes = [
+    [
+      [-width / 3, height / 5],
+      [ -width / 4, 0]
+    ],
+    [
+      [width / 3, height / 5],
+      [width / 4, 0 ]
+    ],
+    [
+      [-width / 4, -height / 4],
+      [-width / 4, height / 4],
+      [width / 4, height / 4],
+      [width / 4, height / 5],
+    ]
+  ]
+}
+
+function draw() {
+  background(255);
+  translate(width / 2, height / 2);
+
+  // let radius = 100;
+  // let theta = animLoop.theta
+  drawKanji();
+}
+
+function drawKanji() {
+  strokes.forEach(stroke => {
+    beginShape();
+    curveVertex(...stroke[0]);
+    stroke.forEach(point => {
+      curveVertex(...point);
+      console.log(point);
+    });
+    curveVertex(...stroke[stroke.length-1]);
+    endShape();
+  });
+}
