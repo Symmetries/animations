@@ -1,5 +1,4 @@
 let phi = (1 + 5**0.5)/2;
-let radius;
 let numPoints = 40;
 let initLineLength = 60;
 let lineLength;
@@ -11,6 +10,8 @@ function f(x) {
 function setup() {
   createCanvas(400, 400);
   radius = 0.5 * width / phi;
+  pixelDensity(1);
+  strokeWeight(3);
 
   frameRate(60);
   pixelDensity(1);
@@ -23,7 +24,6 @@ function setup() {
       height: height
     }
   });
-  strokeWeight(3);
 }
 
 function squareCoord(i, j) {

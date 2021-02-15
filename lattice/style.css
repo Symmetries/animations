@@ -9,8 +9,6 @@ body {
 }
 
 canvas {
-  z-index: -1;
-  transform: scale(2, 2);
   display: block;
   border: 1px solid black;
 }
