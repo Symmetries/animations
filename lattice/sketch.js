@@ -1,7 +1,7 @@
 let phi = (1 + 5**0.5)/2;
 let radius;
 let numPoints = 40;
-let initLineLength = 20;
+let initLineLength = 60;
 let lineLength;
 
 function f(x) {
@@ -9,19 +9,21 @@ function f(x) {
 }
 
 function setup() {
-  createCanvas(200, 200);
+  createCanvas(400, 400);
   radius = 0.5 * width / phi;
 
-  frameRate(30);
+  frameRate(60);
+  pixelDensity(1);
   createLoop({
     duration: 3,
     gif:true,
-    options: {quality: 10,
-      workers: 3,
+    options: {quality: 1,
+      workers: 7,
       width: width,
       height: height
     }
   });
+  strokeWeight(3);
 }
 
 function squareCoord(i, j) {
