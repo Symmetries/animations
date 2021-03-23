@@ -1,0 +1,56 @@
+let radius = 200;
+let alpha = 4;
+
+function setup() {
+  createCanvas(400, 400);
+  frameRate(60);
+  pixelDensity(1);
+  createLoop({
+    duration: 5,
+    gif: true,
+    options: {quality: 1,
+      workers: 8,
+      width: width,
+      height: height
+    }
+  });
+  strokeWeight(5);
+}
+
+function f(x) {
+  return 2 / PI * atan((tan(x * PI / 2) ** alpha));
+}
+
+function draw() {
+  background(255);
+
+  let scenes = [scene1, scene2, scene3, scene4, scene2];
+  let index = Math.floor(animLoop.progress * scenes.length);
+  scenes[index](f(map(animLoop.progress * scenes.length, index, index + 1, 0, 1)));
+}
+
+function scene1(progress) {
+  let theta = progress * 2 * PI;
+  ellipse(width / 2, height / 2, radius  / 2* cos(PI / 2 + theta / 2), radius / 2);
+  point(width / 2 + radius * cos(PI / 2 + theta / 2), height / 2 + radius);
+}
+
+function scene2(progress) {
+  let theta = progress * 2 * PI;
+  let dx = radius * sin(theta / 4) / 2;
+  let dy = radius * cos(theta / 4) / 2;
+  line(width / 2, height / 2, width / 2 - dx, height / 2 - dy);
+  line(width / 2, height / 2, width / 2 + dx, height / 2 + dy);
+}
+
+function scene3(progress) {
+  let theta = progress * 2 * PI;
+  ellipse(width / 2, height / 2, radius, radius * sin(theta / 4));
+  ellipse(width / 2, height / 2, radius / 2, radius / 2 * sin(theta / 4));
+}
+
+function scene4(progress) {
+  let theta = progress * 2 * PI;
+  ellipse(width / 2, height / 2, radius * cos(theta / 4), radius);
+  ellipse(width / 2, height / 2, radius / 2 * cos(theta / 4), radius / 2);
+}
