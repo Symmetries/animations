@@ -9,7 +9,7 @@ let alpha = 4;
 
 function setup() {
   createCanvas(400, 400);
-  frameRate(30);
+  frameRate(60);
   pixelDensity(1);
   createLoop({
     duration: 5,

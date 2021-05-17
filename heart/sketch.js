@@ -7,25 +7,26 @@ function f(x) {
 }
 
 function setup() {
-  createCanvas(150, 150);
+  createCanvas(720, 720);
   radius = 0.5 * width / phi;
 
-  frameRate(20);
+  frameRate(60);
+  pixelDensity(1);
   createLoop({
-    duration: 30,
+    duration: 10,
     gif:true,
-    options: {quality: 10,
+    options: {
+      quality: 10,
       workers: 3,
-      width: width,
-      height: height
     }
   });
+  strokeWeight(8)
 }
 
 function draw() {
   background(255);
 
-  let numPoints = 2 + f(animLoop.theta) * maxPoints;
+  let numPoints = 2 + f(2 * animLoop.progress) * maxPoints;
 
   translate(width / 2, height / 2);
   noFill();
@@ -39,7 +40,7 @@ function draw() {
     points.push([radius * cos(theta), radius * sin(theta)]);
   }
   
-  points.forEach(point => circle(...point, 4));
+  points.forEach(point => circle(...point, 12));
 
   for (let i = 0; i < numPoints; i++) {
     line(...points[i], ...points[(2 * i) % points.length]);
